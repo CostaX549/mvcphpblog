@@ -47,12 +47,11 @@
                     echo '<td class="px-6 py-4">' . $cliente->telefone . '</td>';
                     echo '<td class="px-6 py-4">' . $cliente->endereco . '</td>';
                     echo '<td class="px-6 py-4">';
-                    echo '<a href="/mvcphp/cliente/' . $cliente->id . '" class="font-medium text-blue-600 dark:text-blue-500 hover:underline">Editar</a>';
-                    echo "<button type='button' data-cliente-id='" . $cliente->id . "' data-modal-target='popup-modal' data-modal-toggle='popup-modal' class='font-medium text-red-600 dark:text-red-500 hover:underline delete-btn'>Deletar</button>";
-
-
-    
-                    echo '</td>';
+echo '<div class="flex gap-2">';
+echo '<a href="/mvcphp/cliente/' . $cliente->id . '" class="font-medium text-blue-600 dark:text-blue-500 hover:underline">Editar</a>';
+echo "<button type='button' data-cliente-id='" . $cliente->id . "'  class='font-medium text-red-600 dark:text-red-500 hover:underline delete-btn'>Deletar</button>";
+echo '</div>';
+echo '</td>';
                     echo '</tr>';
                 }
                 ?>
@@ -66,7 +65,7 @@
             Adicionar Cliente
         </button>
     </div>
-
+    <button type="button"  id="triggerDeleteModal3" data-modal-target="popup-modal" data-modal-toggle="popup-modal"  class="sr-only font-medium text-red-600 dark:text-red-500 hover:underline"></button>
  
     <div id="default-modal" tabindex="-1" aria-hidden="true" class="hidden overflow-y-auto overflow-x-hidden fixed top-0 right-0 left-0 z-50 justify-center items-center w-full md:inset-0 h-[calc(100%-1rem)] max-h-full">
         <div class="relative p-4 w-full max-w-2xl max-h-full">
@@ -128,7 +127,7 @@ $(document).ready(function() {
 
 
     $(document).on('click', '.delete-btn', function() {
-        
+        $('#triggerDeleteModal3').click();
         clienteId = $(this).data('cliente-id');
         
         
@@ -179,7 +178,10 @@ $(document).ready(function() {
                         tr += '<td class="px-6 py-4">' + cliente.telefone + '</td>';
                         tr += '<td class="px-6 py-4">' + cliente.endereco + '</td>';
                         tr += '<td class="px-6 py-4">';
-                        tr += '<a href="/mvcphp/edit/' + cliente.id + '" class="font-medium text-blue-600 dark:text-blue-500 hover:underline">Editar</a>';
+                        tr += '<div class="flex gap-2">';
+                    tr += '<a href="/mvcphp/cliente/' + cliente.id + '" class="font-medium text-blue-600 dark:text-blue-500 hover:underline">Editar</a>';
+                    tr += '<button type="button" data-cliente-id="' + cliente.id + '"  class="font-medium text-red-600 dark:text-red-500 hover:underline delete-btn">Deletar</button>';
+                    tr += '</div>';
                         tr += '</td>';
                         tr += '</tr>';
                         tbody.append(tr); 

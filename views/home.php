@@ -159,7 +159,7 @@
  
 
  $(document).ready(function() {
-    carregarOrdemServico();
+  
 
     // Delegação de eventos para botões de deletar
     $(document).on('click', '.delete-btn', function() {

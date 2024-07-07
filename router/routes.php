@@ -71,6 +71,10 @@ $routes = [
     '/deleteCliente/{id}' => [
           'controller' => 'ClienteController@clienteDelete',
           'middleware' => 'auth'
+    ],
+    '/logout' => [
+     'controller' => 'AuthController@logout',
+      'middleware' => 'auth'
     ]
     
 ];

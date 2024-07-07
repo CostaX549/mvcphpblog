@@ -98,6 +98,11 @@ class AuthController extends RenderView {
         echo json_encode(['error' => $errorMessage]);
         exit;
     }
+
+    public function logout() {
+        session_destroy();
+        header("Location: /mvcphp/login");
+    }
 }
 
 ?>
